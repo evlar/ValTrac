@@ -25,6 +25,24 @@ def run_delegate_info_logger():
     os.system(f'pm2 start {python_interpreter} --name="{pm2_instance_name}" -- {delegate_logger_path} {hotkey_address} {network_address}')
     print("Delegate info logger is now running in the background.")
 
+def run_payout():
+    python_interpreter = sys.executable
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    payout_script_path = os.path.join(script_dir, 'blockchain', 'payout.py')
+
+    # Ask if the user is running a local or remote Subtensor network
+    subtensor_network_choice = input("Connect to local Subtensor network for payout? (yes/no): ").strip().lower()
+    if subtensor_network_choice == 'yes':
+        network_address = "ws://127.0.0.1:9944"
+    elif subtensor_network_choice == 'no':
+        network_address = input("Enter the remote Subtensor network address for payout: ").strip()
+    else:
+        print("Invalid response. Please enter 'yes' or 'no'.")
+        return
+
+    print("Starting payout process...")
+    os.system(f'{python_interpreter} {payout_script_path} {network_address}')
+    print("Payout process completed.")
 
 def stop_delegate_info_logger():
     print("Stopping delegate info logger...")
@@ -47,7 +65,7 @@ def main_menu():
         if choice == '1':
             run_delegate_info_logger()
         elif choice == '2':
-            os.system('python3 -m src.blockchain.payout')
+            run_payout()
         elif choice == '3':
             add_users_submenu()
         elif choice == '4':
