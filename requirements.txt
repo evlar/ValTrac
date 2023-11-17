@@ -1,0 +1,5 @@
+
+pandas
+bittensor
+requests
+pm2
