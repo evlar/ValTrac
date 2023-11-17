@@ -1,8 +1,8 @@
 # ValTrac
-Bittensor Validator User and Referral Management System
+Bittensor Validator Payback and Referral Management System
 
 ## Description
-This project is a practical application to be used by a Bittensor Validator Owner to turn their validator into a referral rewards sytem. Its main functionalities include managing user data, handling referrals, logging blockchain-related activities, and processing payouts. It connects to a subtensor node to manage user information and referrals, ensuring efficient and accurate data handling.
+This project is a practical application to be used by a Bittensor validator owner to turn their validator into a referral rewards sytem. Its main functionalities include managing user data, handling referrals, logging blockchain-related activities, and processing payouts. It connects to a subtensor node to manage user information and referrals, ensuring efficient and accurate data handling.
 
 ## Features
 - User management including adding, editing, and validating user coldkey addresses.
