@@ -1,5 +1,9 @@
 import os
 import sys
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+import datetime
 import json
 
 def run_delegate_info_logger():
@@ -41,7 +45,8 @@ def run_payout():
         return
 
     print("Starting payout process...")
-    os.system(f'{python_interpreter} {payout_script_path} {network_address}')
+    # os.system(f'{python_interpreter} {payout_script_path} {network_address}')
+    os.system(f'{python_interpreter} -m src.blockchain.payout {network_address}')
     print("Payout process completed.")
 
 def stop_delegate_info_logger():
@@ -58,7 +63,8 @@ def main_menu():
         print("4. Edit users")
         print("5. Add referral")
         print("6. Edit referrals")
-        print("7. Exit")
+        print("7. Charts and Statistics")
+        print("8. Exit")
 
         choice = input("Enter your choice: ")
 
@@ -75,8 +81,9 @@ def main_menu():
         elif choice == '6':
             os.system('python3 -m src.referral_management.edit_referrals')
         elif choice == '7':
+            os.system('python3 -m src.dashboard.dashboard_menu')
+        elif choice == '8':
             print("Exiting...")
-            # stop_delegate_info_logger() is removed to keep the logger running
             break
         else:
             print("Invalid choice. Please try again.")
