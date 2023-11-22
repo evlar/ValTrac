@@ -1,0 +1,50 @@
+project_root/
+│
+├── src/                        # Source files
+│   ├── dashboard/              # For handling data visualization
+│   │   ├── __init__.py
+│   │   ├── dashboard_data.py   # Functions for loading dashboard variables
+│   │   ├── dashboard_menu.py
+│   │   └── graph_generator.py  # Functions for loading charts and graphs
+|   |
+│   ├── data_management/        # For handling data-related operations
+│   │   ├── __init__.py
+│   │   ├── user_data.py        # Functions for loading/saving user data
+│   │   └── referral_data.py    # Functions for loading/saving referral data
+│   │
+│   ├── utils/                  # Utility functions
+│   │   ├── __init__.py
+│   │   ├── logger.py           # Custom logging functions
+│   │   └── validators.py       # Validation functions (e.g., address validation)
+│   │
+│   ├── blockchain/             # Blockchain related functions
+│   │   ├── __init__.py
+│   │   ├── delegate_info.py
+│   │   └── payout.py
+│   │
+│   ├── user_management/        # User management related scripts
+│   │   ├── __init__.py
+│   │   ├── add_users.py     
+│   │   ├── edit_users.py
+│   │   └── load_users.py
+|   |
+│   ├── referral_management/    # Referral management related scripts
+│   │   ├── __init__.py
+│   │   ├── add_referals.py     # Creates and adds to referral_layers.csv
+│   │   └── edit_referrals.py   # Edits tax and/or deletes users from referral_layers.csv
+│   │
+│   ├── __init__.py
+│   └── main_menu.py # Main menu script
+│
+├── data/                       # Data files (JSON, CSV, etc.)
+│   ├── user_data.json
+│   ├── user_data.csv           # optional csv to import user data from prompted file path. 
+│   └── referral_layers.csv
+│
+├── logs/                       # Log files
+│   └── delegate_info.log       # file created and updated by delegate_info.py
+│   └── payout_log.csv          # file created and updated by payout.py
+│
+├── run.py
+├── requirements.txt            # Project dependencies
+└── README.md                   # Project documentation
