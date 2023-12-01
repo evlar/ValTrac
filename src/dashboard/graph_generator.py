@@ -91,10 +91,18 @@ def plot_user_stake_and_value(user_name, delegate_info_log_path, user_data_path)
     # Parse the delegate_info.log file for the given user
     user_data = parse_delegate_info_log_for_user(delegate_info_log_path, user_addresses)
 
+    # New: Filter out entries with zero stake until the first non-zero stake is found
+    first_non_zero_found = False
+    filtered_user_data = []
+    for entry in user_data:
+        if first_non_zero_found or entry['user_stake'] > 0:
+            filtered_user_data.append(entry)
+            first_non_zero_found = True
+
     # Convert timestamps to datetime objects and prepare data for plotting
-    timestamps = [datetime.datetime.strptime(entry['timestamp'], '%Y-%m-%d %H:%M:%S') for entry in user_data]
-    user_stakes = [entry['user_stake'] for entry in user_data]
-    dollar_values = [entry['dollar_value'] for entry in user_data]
+    timestamps = [datetime.datetime.strptime(entry['timestamp'], '%Y-%m-%d %H:%M:%S') for entry in filtered_user_data]
+    user_stakes = [entry['user_stake'] for entry in filtered_user_data]
+    dollar_values = [entry['dollar_value'] for entry in filtered_user_data]
 
     # Create a plot with two y-axes
     fig, ax1 = plt.subplots(figsize=(12, 6))
@@ -193,6 +201,7 @@ def plot_user_apr_over_time(user_name, delegate_info_log_path, user_data_path, r
 
         return parsed_data
 
+
     # Load user data and referral structure
     with open(user_data_path, 'r') as file:
         user_data = json.load(file)
@@ -204,9 +213,17 @@ def plot_user_apr_over_time(user_name, delegate_info_log_path, user_data_path, r
     # Parse the delegate_info.log file for the given user
     user_apr_data = parse_delegate_info_log_for_user(delegate_info_log_path, user_addresses, referral_structure)
 
+    # New: Filter out entries with zero APR until the first non-zero APR is found
+    first_non_zero_found = False
+    filtered_user_apr_data = []
+    for entry in user_apr_data:
+        if first_non_zero_found or entry['user_apr'] > 0:
+            filtered_user_apr_data.append(entry)
+            first_non_zero_found = True
+
     # Convert data for plotting
-    timestamps = [entry['timestamp'] for entry in user_apr_data]
-    user_aprs = [entry['user_apr'] for entry in user_apr_data]
+    timestamps = [entry['timestamp'] for entry in filtered_user_apr_data]
+    user_aprs = [entry['user_apr'] for entry in filtered_user_apr_data]
 
     # Plotting
     plt.figure(figsize=(12, 6))

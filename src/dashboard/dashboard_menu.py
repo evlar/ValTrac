@@ -79,9 +79,9 @@ def main_menu():
         print("4. Display User Balance")
         print("5. Calculate User Base and Adjusted Percent")
         print("6. User APR")
-        print("7. Exit")
+        print("7. Return to Previous Menu")
 
-        choice = input("Enter your choice (1/2/3/4/5/6): ")
+        choice = input("Enter your choice (1/2/3/4/5/6/7): ")
 
         if choice == '1':
             log_file_path = os.path.join(current_script_dir, '../../logs/delegate_info.log')
