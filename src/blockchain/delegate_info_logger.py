@@ -67,7 +67,9 @@ def get_delegate_by_hotkey(hotkey_ss58_address, block=None):
                 'take': float(delegate_info.take),
                 'validator_permits': delegate_info.validator_permits,
                 'registrations': delegate_info.registrations,
-                'return_per_1000': float(delegate_info.return_per_1000),
+                'return_per_1000': f'{delegate_info.return_per_1000:.6f}',
+                #'return_per_1000': f"{float(delegate_info.return_per_1000):.9f}",
+                #'return_per_1000': f'{delegate[0].return_per_1000!s:6.6}'
                 'total_daily_return': float(delegate_info.total_daily_return)
             }
             
