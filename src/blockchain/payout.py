@@ -7,6 +7,8 @@ import re
 import csv
 from ..utils.logger import setup_logger
 from ..data_management.user_data import load_user_data
+from ..utils.logger import setup_logger
+
 
 # Correct paths for script directory and log file
 base_directory = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
